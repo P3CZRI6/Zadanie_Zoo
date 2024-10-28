@@ -1,0 +1,40 @@
+---Zadanie 1---
+-- Tabela autorów --
+CREATE TABLE authors (
+    author_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL
+);
+
+-- Tabela książek --
+CREATE TABLE books (
+    book_id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    publication_year INT CHECK (publication_year > 0),
+    isbn CHAR(13) UNIQUE,
+    author_id INT REFERENCES authors(author_id) ON DELETE CASCADE
+);
+
+-- Tabela recenzji --
+CREATE TABLE reviews (
+    review_id SERIAL PRIMARY KEY,
+    book_id INT REFERENCES books(book_id) ON DELETE CASCADE,
+    rating INT CHECK (rating >= 1 AND rating <= 10),
+    content TEXT
+);
+
+
+---Zadanie 2---
+SELECT first_name, last_name, COUNT(book_id) AS book_count FROM authors 
+LEFT JOIN books ON authors.author_id = books.author_id 
+GROUP BY author_id 
+ORDER BY book_count DESC;
+
+---Zadanie 3---
+CREATE VIEW top_authors_by_rating AS
+SELECT first_name, last_name, AVG(rating) AS average_rating FROM authors 
+JOIN books ON authors.author_id = books.author_id 
+JOIN reviews ON books.book_id = reviews.book_id 
+GROUP BY authors.author_id 
+ORDER BY average_rating DESC 
+LIMIT 5;
