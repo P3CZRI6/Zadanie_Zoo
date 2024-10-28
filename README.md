@@ -32,25 +32,25 @@
 - Base class for all animals.
 - Properties include name, species, diet type, and whether they have fur.
 - Methods:
--   ```eat(Food $food)```: Determines if an animal can eat the provided food based on its diet.
--   ```groom()```: Groom the animal if it has fur.
--   ```__toString()```: Returns a string representation of the animal.
+  - ```eat(Food $food)```: Determines if an animal can eat the provided food based on its diet.
+  - ```groom()```: Groom the animal if it has fur.
+  - ```__toString()```: Returns a string representation of the animal.
 
 **Animal Subclasses:**
 - Inherit from the `Animal` class and initialize with specific attributes:
--   Tiger
--   Elephant
--   Rhino
--   Fox
--   SnowLeopard
--   Rabbit
+  - Tiger
+  - Elephant
+  - Rhino
+  - Fox
+  - SnowLeopard
+  - Rabbit
 
 **Zoo Class:**
 - Manages a collection of `Animal` objects.
 - Methods include:
--   ```addAnimal(Animal $animal)```: Adds an animal to the zoo.
--   ```feedAll(Food $food)```: Feeds all animals in the zoo the specified food.
--   ```groomAll()```: Groom all animals in the zoo.
+  - ```addAnimal(Animal $animal)```: Adds an animal to the zoo.
+  - ```feedAll(Food $food)```: Feeds all animals in the zoo the specified food.
+  - ```groomAll()```: Groom all animals in the zoo.
 
 ## Example Usage
 The main execution script at the bottom of the PHP file demonstrates how to:
